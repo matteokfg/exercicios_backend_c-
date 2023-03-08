@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-public class Eexercicio_array_02
+public class Exercicio_array_02
 {
     public static void Main()
     {
