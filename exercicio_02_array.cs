@@ -13,10 +13,10 @@ public class Eexercicio_array_02
             Console.WriteLine($"Escreva o nome do {i+1} convidado:");
             convidados[i] = Console.ReadLine();
         }
-        Console.WriteLine("A lista de convidados e:");
-        foreach (var conv in convidados)
-        {
-            Console.WriteLine(conv);
-        }
+        
+        Console.WriteLine(convidados.Length);
+        Console.WriteLine(convidados[0]);
+        Console.WriteLine(convidados[1]);
+        Console.WriteLine(convidados[convidados.Length - 1]);
     }
 }
