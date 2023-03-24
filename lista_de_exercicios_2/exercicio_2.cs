@@ -8,7 +8,7 @@ namespace ListaEstruturaCondicional
 { 
     public class Program 
     { 
-        public static void Main(string[] args) 
+        static void Main(string[] args) 
         { 
             double a = 0; 
             double b = 0; 
