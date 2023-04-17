@@ -1,0 +1,82 @@
+        public static void LerMatriculas(int[] array, int matricula)
+        {
+            if (array.Contains(matricula))
+            {
+                Console.WriteLine("Essa matrícula já existe.");
+            }
+            else
+            {
+                Console.WriteLine("Essa matrícula não existe.");
+            }
+        }
+
+
+        public static void Exercicio_4()
+        {
+            var hashset = new HashSet<int>();
+            int[] vetMatriculas = new int[10];
+
+            while (hashset.Count < 10)
+            {
+                Console.Write("Entre com a mattrícula do aluno: ");
+                hashset.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+            vetMatriculas = hashset.ToArray();
+            LerMatriculas(vetMatriculas, 1);
+        }
+
+        public static void Exercicio_5()
+        {
+            double[] nota1 = new double[10];
+            double[] nota2 = new double[10];
+            double[] media = new double[10];
+            int i = 0;
+
+            while (true)
+            {
+                Console.Write("Digite a nota da primeira prova (-1 para sair): ");
+                nota1[i] = Convert.ToDouble(Console.ReadLine());
+                if (nota1[i] == -1) break;
+
+                Console.Write("Digite a nota da segunda prova: ");
+                nota2[i] = Convert.ToDouble(Console.ReadLine());
+
+                media[i] = (nota1[i] + nota2[i]) / 2;
+                i++;
+            }
+
+            for (int j = 0; j < i; j++)
+            {
+                if (media[j] >= 6)
+                {
+                    Console.WriteLine("Aluno " + (j + 1) + " APROVADO com média " + media[j]);
+                }
+                else
+                {
+                    Console.WriteLine("Aluno " + (j + 1) + " REPROVADO com média " + media[j]);
+                }
+            }
+        }
+
+        public static void Exercicio_6()
+        {
+            int[] vet = LerEntradas(10);
+            int soma = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                if (vet[i] % 2 != 0)
+                {
+                    soma += vet[i];
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine("O valor da soma dos números ímpares presentes neste vetor é: " + soma);
+        }
+
+        static void Main(string[] args)
+        {
+            //Exercicio_4();
+            //Exercicio_5();
+            //Exercicio_6();
+        }
+    
