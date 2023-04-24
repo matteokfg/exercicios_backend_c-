@@ -1,0 +1,142 @@
+using System.Collections.Generic;
+
+namespace ListaList
+{
+    internal class Program
+    {
+        public static List<int> LerEntradas(int NumeroDeEntradas)
+        {
+            List<int> lista = new List<int>();
+
+            for (int i = 0; i < NumeroDeEntradas; i++)
+            {
+                Console.Write("Entre com um número inteiro: ");
+                lista.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+
+            return lista;
+        }
+
+        public static void ImprimirEntradas(List<int> lista)
+        {
+            foreach (int numero in lista)
+            {
+                Console.WriteLine(numero);
+            }
+        }
+
+        public static List<int> GerarEntradas(int NumeroDeEntradas)
+        {
+            List<int> lista = new List<int>();
+
+            for (int i = 0; i < NumeroDeEntradas; i++)
+            {
+                Random r = new Random();
+                lista.Add(r.Next(0, 100));
+            }
+            return lista;
+        }
+
+
+        public static void Exercicio_1()
+        {
+            ImprimirEntradas(LerEntradas(10));
+        }
+
+        public static void Exercicio_2()
+        {
+            List<int> listaMatriculas = new List<int>();
+
+            while (listaMatriculas.Count < 10)
+            {
+                Console.Write("Entre com a matrícula do aluno: ");
+                int novaMatricula = Convert.ToInt32(Console.ReadLine());
+                if (!listaMatriculas.Contains(novaMatricula))
+                {
+                    listaMatriculas.Add(novaMatricula);
+                }
+            }
+            ImprimirEntradas(listaMatriculas);
+        }
+
+        public static void Exercicio_3()
+        {
+            List<int> lista = new List<int>();
+            int numeroLido = 0;
+
+            do
+            {
+                Console.Write("Entre com um número inteiro: ");
+                numeroLido = Convert.ToInt32(Console.ReadLine());
+                if (numeroLido != 999)
+                    lista.Add(numeroLido);
+            } while (numeroLido != 999);
+
+            lista.Reverse();
+            ImprimirEntradas(lista);
+        }
+
+        public static void Exercicio_8()
+        {
+            List<string> convidados = new List<string>();
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Escolha uma opção: ");
+                Console.WriteLine("1 - Cadastrar convidado");
+                Console.WriteLine("2 - Remover convidado");
+                Console.WriteLine("3 - Exibir convidados");
+                Console.WriteLine("Digite 'sair' para encerrar o programa");
+                string opcao = Console.ReadLine();
+
+                if (opcao == "sair")
+                {
+                    break;
+                }
+                else if (opcao == "1")
+                {
+                    Console.Write("Digite o nome do convidado: ");
+                    string nome = Console.ReadLine();
+                    convidados.Add(nome);
+                    Console.WriteLine("Convidado cadastrado!");
+                }
+                else if (opcao == "2")
+                {
+                    Console.Write("Digite o nome do convidado que deseja remover: ");
+                    string nome = Console.ReadLine();
+                    if (convidados.Remove(nome))
+                    {
+                        Console.WriteLine("Convidado removido.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Convidado não encontrado na lista.");
+                    }
+                }
+                else if (opcao == "3")
+                {
+                    Console.WriteLine("Lista de convidados:");
+                    foreach (string nome in convidados)
+                    {
+                        Console.WriteLine(nome);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Opção inválida.");
+                }
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            //ImprimirEntradas(LerEntradas(10));
+            //ImprimirEntradas(GerarEntradas(10));
+            //Exercicio_1();
+            //Exercicio_2();
+            //Exercicio_3();
+            //Exercicio_8();
+        }
+    }
+}
