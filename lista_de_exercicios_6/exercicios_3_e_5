@@ -1,0 +1,108 @@
+        public static int[,] LerEntradasMatriz(int NumeroLinhas, int NumeroColunas)
+        {
+            int[,] matriz = new int[NumeroLinhas, NumeroColunas];
+
+            for (int l = 0; l < NumeroLinhas; l++)
+            {
+                for (int c = 0; c < NumeroColunas; c++)
+                {
+                    Console.Write("Entre com um número inteiro: ");
+                    matriz[l, c] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+            return matriz;
+        }
+
+        public static void ImprimirMatriz(int[,] matriz)
+        {
+            for (int l = 0; l < matriz.GetLength(0); l++)
+            {
+                Console.WriteLine();
+                Console.Write("|");
+                for (int c = 0; c < matriz.GetLength(1); c++)
+                {
+                    Console.Write(matriz[l, c] + "|");
+                }
+            }
+            Console.WriteLine();
+        }
+
+        public static int[,] GerarMatriz(int NumeroLinhas, int NumeroColunas)
+        {
+            int[,] matriz = new int[NumeroLinhas, NumeroColunas];
+
+            for (int l = 0; l < NumeroLinhas; l++)
+            {
+                for (int c = 0; c < NumeroColunas; c++)
+                {
+                    Random r = new Random();
+                    matriz[l, c] = r.Next(0, 100);
+                }
+            }
+            return matriz;
+        }
+        
+        public static void Exercicio_3()
+        {
+            int[,] matriz = LerEntradasMatriz(3, 3);
+            int aux = matriz[0, 0];
+            matriz[0, 0] = matriz[2, 2];
+            matriz[2, 2] = aux;
+            ImprimirMatriz(matriz);
+        }
+
+        public static void Exercicio_5()
+        {
+            char[,] matriz = new char[,]
+            {
+            {'Q', 'F', 'H', 'Q', 'P', 'L', 'P', 'W', 'S', 'Y'},
+            {'A', 'A', 'N', 'W', 'A', 'Z', 'O', 'Q', 'A', 'T'},
+            {'Z', 'S', 'U', 'E', 'S', 'A', 'S', 'A', 'C', 'R'},
+            {'W', 'A', 'J', 'R', 'D', 'X', 'I', 'L', 'M', 'E'},
+            {'S', 'C', 'M', 'T', 'F', 'C', 'U', 'K', 'N', 'W'},
+            {'X', 'V', 'I', 'C', 'A', 'S', 'A', 'J', 'B', 'C'},
+            {'E', 'T', 'K', 'Y', 'G', 'V', 'Y', 'H', 'V', 'A'},
+            {'D', 'G', 'O', 'U', 'H', 'B', 'T', 'G', 'C', 'S'},
+            {'C', 'B', 'L', 'I', 'J', 'N', 'R', 'F', 'X', 'A'},
+            {'R', 'Y', 'P', 'O', 'K', 'M', 'E', 'D', 'Z', 'Q'},
+            };
+
+            Console.Write("Digite a palavra de busca (até 4 caracteres): ");
+            string palavraBusca = Console.ReadLine().ToUpper();
+
+            if (palavraBusca.Length > 4)
+            {
+                Console.WriteLine("A palavra de busca deve ter no máximo 4 caracteres.");
+                return;
+            }
+
+            int ocorrencias = 0;
+            for (int i = 0; i < matriz.GetLength(0); i++)
+            {
+                string linha = "";
+                for (int j = 0; j < matriz.GetLength(1); j++)
+                {
+                    linha += matriz[i, j];
+                    if (linha.Length > palavraBusca.Length)
+                    {
+                        linha = linha.Substring(1);
+                    }
+                    if (linha == palavraBusca)
+                    {
+                        ocorrencias++;
+                    }
+                }
+            }
+
+            Console.WriteLine($"A palavra {palavraBusca} ocorre {ocorrencias} vez(es) na matriz.");
+        }
+
+
+        static void Main(string[] args)
+        {
+            //ImprimirMatriz(LerEntradasMatriz(3,3));
+            //ImprimirMatriz(GerarMatriz(3, 3));
+            //Exercicio_2();
+            //Exercicio_3();
+            //Exercicio_5();
+        }
